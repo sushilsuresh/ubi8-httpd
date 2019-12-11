@@ -3,6 +3,7 @@ RUN yum install --disablerepo=* --enablerepo=ubi-8-appstream --enablerepo=ubi-8-
 RUN echo "The HTTP Server is Running" > /var/www/html/index.html
 RUN mkdir -p /var/www/ssl
 RUN echo "The HTTPS Server is Running" > /var/www/ssl/index.html
+RUN chmod -R g+rwX /var/run/httpd
 COPY ssl.conf /etc/httpd/conf.d/
 COPY www.example.com.crt /etc/pki/tls/certs/www.example.com.crt
 COPY www.example.com.key /etc/pki/tls/private/www.example.com.key
